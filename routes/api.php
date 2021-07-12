@@ -17,13 +17,10 @@ use App\Http\Controllers\API\V1\AuthController;
 */
 
 Route::group(['prefix' => 'v1', 'middleware' => ['auth:api', 'json.response']], function(){
-//    Route::get('/users', [UserController::class, 'index']);
-//    Route::get('/users/search', [UserController::class, 'filteredUsers']);
-});
-Route::group(['prefix' => 'v1'], function(){
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/search', [UserController::class, 'searchUsers']);
-
+});
+Route::group(['prefix' => 'v1'], function(){
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
